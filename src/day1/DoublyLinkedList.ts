@@ -35,9 +35,7 @@ export default class DoublyLinkedList<T> {
 
     this.length++;
     const node: ListNode<T> = { value: item };
-
-    let current = this.head;
-    for (let i = 0; i < idx; i++) current = current?.next;
+    const current = this.getAt(idx);
 
     node.prev = current?.prev;
     node.next = current;
@@ -64,53 +62,49 @@ export default class DoublyLinkedList<T> {
 
   remove(item: T): T | undefined {
     let current = this.head;
-
-    while (current) {
-      if (current.value === item) {
-        this.length--;
-        const value = current.value;
-
-        if (current === this.head) {
-          this.head = this.head.next;
-        } else if (current === this.tail) {
-          this.tail = this.tail.prev;
-        } else {
-          if (current.prev) current.prev.next = current.next;
-          if (current.next) current.next.prev = current.prev;
-        }
-
-        return value;
-      }
+    for (let i = 0; current && i < this.length; i++) {
+      if (current.value === item) break;
       current = current.next;
     }
 
-    return;
+    if (!current) return;
+
+    return this.removeNode(current);
   }
 
   get(idx: number): T | undefined {
-    if (idx > this.length) return;
-
-    let current = this.head;
-    for (let i = 0; i < idx; i++) current = current?.next;
-
-    return current?.value;
+    return this.getAt(idx)?.value;
   }
 
   removeAt(idx: number): T | undefined {
+    const current = this.getAt(idx);
+    if (!current) return;
+
+    return this.removeNode(current);
+  }
+
+  private getAt(idx: number): ListNode<T> | undefined {
     if (idx > this.length) return;
 
     let current = this.head;
-    for (let i = 0; i < idx; i++) current = current?.next;
+    for (let i = 0; current && i < idx; i++) current = current.next;
 
+    return current;
+  }
+
+  private removeNode(node: ListNode<T>): T {
     this.length--;
-    const value = current?.value;
-    if (current === this.head) {
-      this.head = this.head?.next;
-    } else if (current === this.tail) {
-      this.tail = this.tail?.prev;
+    const value = node.value;
+
+    if (this.length === 0) {
+      this.head = this.tail = undefined;
+    } else if (node === this.head) {
+      this.head = this.head.next;
+    } else if (node === this.tail) {
+      this.tail = this.tail.prev;
     } else {
-      if (current?.prev) current.prev.next = current.next;
-      if (current?.next) current.next.prev = current.prev;
+      if (node.prev) node.prev.next = node.next;
+      if (node.next) node.next.prev = node.prev;
     }
 
     return value;
