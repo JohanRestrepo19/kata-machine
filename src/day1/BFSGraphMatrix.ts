@@ -19,11 +19,8 @@ const bfs = (
     if (current === needle) break;
 
     const adjs = graph[current];
-
     for (let i = 0; i < adjs.length; i++) {
-      if (adjs[i] === 0) continue;
-
-      if (seen[i]) continue;
+      if (adjs[i] === 0 || seen[i]) continue;
 
       prev[i] = current;
       queue.enqueue(i);
