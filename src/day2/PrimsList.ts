@@ -1,3 +1,3 @@
-export default function prims(list: WeightedAdjacencyList): WeightedAdjacencyList | null {
-
-}
+export default function prims(
+    list: WeightedAdjacencyList,
+): WeightedAdjacencyList | null {}

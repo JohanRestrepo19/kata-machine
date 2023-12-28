@@ -1,40 +1,40 @@
 type Node<T> = {
-  value: T;
-  prev?: Node<T>;
-};
+    value: T
+    prev?: Node<T>
+}
 
 export default class Stack<T> {
-  public length: number;
-  private head?: Node<T>;
+    public length: number
+    private head?: Node<T>
 
-  constructor() {
-    this.head = undefined;
-    this.length = 0;
-  }
-
-  push(item: T): void {
-    const newNode: Node<T> = { value: item };
-    this.length++;
-    if (!this.head) {
-      this.head = newNode;
-      return;
+    constructor() {
+        this.head = undefined
+        this.length = 0
     }
 
-    newNode.prev = this.head;
-    this.head = newNode;
-  }
+    push(item: T): void {
+        const newNode: Node<T> = { value: item }
+        this.length++
+        if (!this.head) {
+            this.head = newNode
+            return
+        }
 
-  pop(): T | undefined {
-    if (!this.head) return undefined;
+        newNode.prev = this.head
+        this.head = newNode
+    }
 
-    this.length--;
-    const head = this.head;
-    this.head = this.head.prev;
+    pop(): T | undefined {
+        if (!this.head) return undefined
 
-    return head.value;
-  }
+        this.length--
+        const head = this.head
+        this.head = this.head.prev
 
-  peek(): T | undefined {
-    return this.head?.value;
-  }
+        return head.value
+    }
+
+    peek(): T | undefined {
+        return this.head?.value
+    }
 }
