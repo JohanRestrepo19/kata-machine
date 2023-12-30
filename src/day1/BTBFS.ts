@@ -1,19 +1,19 @@
-import Queue from './Queue'
+import Queue from "./Queue";
 
 const bfs = (head: BinaryNode<number>, needle: number): boolean => {
-    const queue = new Queue<BinaryNode<number>>()
-    queue.enqueue(head)
+    const queue = new Queue<BinaryNode<number>>();
+    queue.enqueue(head);
 
     while (queue.length) {
-        const current = queue.deque()
+        const current = queue.deque();
 
-        if (needle === current?.value) return true
+        if (needle === current?.value) return true;
 
-        if (current?.left) queue.enqueue(current.left)
-        if (current?.right) queue.enqueue(current.right)
+        if (current?.left) queue.enqueue(current.left);
+        if (current?.right) queue.enqueue(current.right);
     }
 
-    return false
-}
+    return false;
+};
 
-export default bfs
+export default bfs;

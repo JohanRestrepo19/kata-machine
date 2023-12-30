@@ -38,7 +38,7 @@ export const tree: BinaryNode<number> = {
             left: null,
         },
     },
-}
+};
 
 export const tree2: BinaryNode<number> = {
     value: 20,
@@ -84,4 +84,4 @@ export const tree2: BinaryNode<number> = {
             left: null,
         },
     },
-}
+};

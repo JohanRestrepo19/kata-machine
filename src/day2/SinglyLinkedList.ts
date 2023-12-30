@@ -1,5 +1,5 @@
 export default class SinglyLinkedList<T> {
-    public length: number
+    public length: number;
 
     constructor() {}
 

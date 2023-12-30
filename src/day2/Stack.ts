@@ -1,5 +1,5 @@
 export default class Stack<T> {
-    public length: number
+    public length: number;
 
     constructor() {}
 

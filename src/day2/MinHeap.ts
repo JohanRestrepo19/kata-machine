@@ -1,5 +1,5 @@
 export default class MinHeap {
-    public length: number
+    public length: number;
 
     constructor() {}
 

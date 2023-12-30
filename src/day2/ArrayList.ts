@@ -1,5 +1,5 @@
 export default class ArrayList<T> {
-    public length: number
+    public length: number;
 
     constructor() {}
 

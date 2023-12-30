@@ -15,47 +15,47 @@ export default function prims(
     // ...
     // 8. $$
 
-    const visited: boolean[] = new Array(list.length).fill(false)
-    const mst: GraphEdge[][] = new Array(list.length).fill(null).map(() => [])
+    const visited: boolean[] = new Array(list.length).fill(false);
+    const mst: GraphEdge[][] = new Array(list.length).fill(null).map(() => []);
 
     // 1.
-    visited[0] = true
-    let current = 0
+    visited[0] = true;
+    let current = 0;
 
-    const edges: [number, GraphEdge][] = []
+    const edges: [number, GraphEdge][] = [];
 
     do {
         // 2. put all dem edges in the list
         for (const edgemeDaddy of list[current]) {
-            edges.push([current, edgemeDaddy])
+            edges.push([current, edgemeDaddy]);
         }
 
         // 3. select edge that is the lowest value and to a node we haven't seen yet
-        let lowest = Infinity
-        let lowestEdge: [number, GraphEdge | null] = [-1, null]
+        let lowest = Infinity;
+        let lowestEdge: [number, GraphEdge | null] = [-1, null];
         for (const edge of edges) {
             if (visited[edge[1].to] === false && edge[1].weight < lowest) {
-                lowest = edge[1].weight
-                lowestEdge = edge
+                lowest = edge[1].weight;
+                lowestEdge = edge;
             }
         }
 
         // 4. we need to insert the edge from current to new into our mst, set visited, and remove the potential edge
         if (lowestEdge[1] !== null) {
-            mst[lowestEdge[0]].push(lowestEdge[1])
+            mst[lowestEdge[0]].push(lowestEdge[1]);
             mst[lowestEdge[1].to].push({
                 to: lowestEdge[0],
                 weight: lowestEdge[1].weight,
-            })
-            visited[lowestEdge[1].to] = true
-            edges.splice(edges.indexOf(lowestEdge as [number, GraphEdge]), 1)
+            });
+            visited[lowestEdge[1].to] = true;
+            edges.splice(edges.indexOf(lowestEdge as [number, GraphEdge]), 1);
         }
 
         // 5. the newly selected node becomes the current node
-        current = lowestEdge[1]?.to || -1
-    } while (visited.includes(false) && current >= 0)
+        current = lowestEdge[1]?.to || -1;
+    } while (visited.includes(false) && current >= 0);
 
-    return mst
+    return mst;
 }
 
 if (require.main === module) {
@@ -97,5 +97,5 @@ if (require.main === module) {
             { to: 5, weight: 1 },
             { to: 3, weight: 1 },
         ],
-    ])
+    ]);
 }

@@ -5,37 +5,37 @@ const walk = (
     seen: boolean[],
     path: number[],
 ): boolean => {
-    if (seen[source]) return false
+    if (seen[source]) return false;
 
-    path.push(source)
-    if (source === needle) return true
+    path.push(source);
+    if (source === needle) return true;
 
-    seen[source] = true
+    seen[source] = true;
 
-    const edges = graph[source]
+    const edges = graph[source];
     for (let i = 0; i < edges.length; i++) {
-        const edge = edges[i]
-        if (walk(graph, edge.to, needle, seen, path)) return true
+        const edge = edges[i];
+        if (walk(graph, edge.to, needle, seen, path)) return true;
     }
 
-    path.pop()
+    path.pop();
 
-    return false
-}
+    return false;
+};
 
 const dfs = (
     graph: WeightedAdjacencyList,
     source: number,
     needle: number,
 ): number[] | null => {
-    const path: number[] = []
-    const seen: boolean[] = new Array(graph.length).fill(false)
+    const path: number[] = [];
+    const seen: boolean[] = new Array(graph.length).fill(false);
 
-    walk(graph, source, needle, seen, path)
+    walk(graph, source, needle, seen, path);
 
-    if (path.length === 0) return null
+    if (path.length === 0) return null;
 
-    return path
-}
+    return path;
+};
 
-export default dfs
+export default dfs;
