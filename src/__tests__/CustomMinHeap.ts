@@ -86,9 +86,9 @@ describe("MinHeap", () => {
         heap.insert({ priority: 3, id: 1 });
         heap.insert({ priority: 69, id: 2 });
 
-        expect(heap.innerLookUp.get(0)).toEqual(1);
-        expect(heap.innerLookUp.get(1)).toEqual(0);
-        expect(heap.innerLookUp.get(2)).toEqual(2);
+        expect(heap.lookUpId(0)).toEqual(1);
+        expect(heap.lookUpId(1)).toEqual(0);
+        expect(heap.lookUpId(2)).toEqual(2);
     });
 
     test("Update and lookup", () => {
@@ -101,13 +101,13 @@ describe("MinHeap", () => {
         heap.insert({ priority: 4, id: "E" });
 
         heap.update("D", 2); //In this case the heap must to heapifyUp
-        expect(heap.innerLookUp.get("D")).toEqual(0);
+        expect(heap.lookUpId("D")).toEqual(0);
 
         heap.update("C", 6); //In this case the heap only needs to update the value
-        expect(heap.innerLookUp.get("C")).toEqual(2);
+        expect(heap.lookUpId("C")).toEqual(2);
 
         heap.update("D", 420); // In this case the heap must to heapifyDown
-        expect(heap.innerLookUp.get("D")).toEqual(3);
+        expect(heap.lookUpId("D")).toEqual(3);
     });
 
     test("Deletion and lookup", () => {
@@ -118,8 +118,8 @@ describe("MinHeap", () => {
 
         heap.delete();
 
-        expect(heap.innerLookUp.get("B")).toBeUndefined();
-        expect(heap.innerLookUp.get("A")).toEqual(0);
-        expect(heap.innerLookUp.get("C")).toEqual(1);
+        expect(heap.lookUpId("B")).toBeUndefined();
+        expect(heap.lookUpId("A")).toEqual(0);
+        expect(heap.lookUpId("C")).toEqual(1);
     });
 });

@@ -14,8 +14,8 @@ export default class MinHeap<T extends HeapElement> {
         this.lookUp = new Map();
     }
 
-    get innerLookUp() {
-        return this.lookUp;
+    lookUpId(id: T["id"]): number | undefined {
+        return this.lookUp.get(id);
     }
 
     insert(element: T) {
