@@ -1,7 +1,9 @@
 const dijkstra_list = (
     source: number,
     sink: number,
-    arr: WeightedAdjacencyList,
+    graph: WeightedAdjacencyList,
 ): number[] => {
     return [];
 };
+
+export default dijkstra_list;

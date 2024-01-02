@@ -45,7 +45,7 @@ export default class MinHeap<T extends HeapElement> {
         if (element.priority > prevPriority) this.heapifyDown(elementIdx);
     }
 
-    delete(): T["id"] | undefined {
+    delete(): T | undefined {
         if (this.length === 0) return;
 
         const out = this.data[0];
@@ -54,7 +54,7 @@ export default class MinHeap<T extends HeapElement> {
         if (this.length === 1) {
             this.length = 0;
             this.data = [];
-            return out.id;
+            return out;
         }
 
         this.data[0] = this.data[this.length - 1];
@@ -62,7 +62,7 @@ export default class MinHeap<T extends HeapElement> {
         this.data.splice(this.length - 1, 1);
         this.length--;
         this.heapifyDown(0);
-        return out.id;
+        return out;
     }
 
     private parent(idx: number): number {

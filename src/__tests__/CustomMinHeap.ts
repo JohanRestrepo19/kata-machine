@@ -1,7 +1,7 @@
 import MinHeap from "@code/CustomMinHeap";
 
 describe("MinHeap", () => {
-    test("Prime's Test", function() {
+    test("Prime's Test", () => {
         const heap = new MinHeap();
 
         expect(heap.length).toEqual(0);
@@ -16,15 +16,15 @@ describe("MinHeap", () => {
         heap.insert({ priority: 7, id: 7 });
 
         expect(heap.length).toEqual(8);
-        expect(heap.delete()).toEqual(5);
-        expect(heap.delete()).toEqual(1);
-        expect(heap.delete()).toEqual(4);
-        expect(heap.delete()).toEqual(0);
+        expect(heap.delete()).toEqual({ priority: 1, id: 5 });
+        expect(heap.delete()).toEqual({ priority: 3, id: 1 });
+        expect(heap.delete()).toEqual({ priority: 4, id: 4 });
+        expect(heap.delete()).toEqual({ priority: 5, id: 0 });
         expect(heap.length).toEqual(4);
-        expect(heap.delete()).toEqual(7);
-        expect(heap.delete()).toEqual(6);
-        expect(heap.delete()).toEqual(2);
-        expect(heap.delete()).toEqual(3);
+        expect(heap.delete()).toEqual({ priority: 7, id: 7 });
+        expect(heap.delete()).toEqual({ priority: 8, id: 6 });
+        expect(heap.delete()).toEqual({ priority: 69, id: 2 });
+        expect(heap.delete()).toEqual({ priority: 420, id: 3 });
         expect(heap.length).toEqual(0);
     });
 
@@ -32,7 +32,7 @@ describe("MinHeap", () => {
         const heap = new MinHeap();
         heap.insert({ priority: 5, id: 0 });
         expect(heap.length).toEqual(1);
-        expect(heap.delete()).toEqual(0);
+        expect(heap.delete()).toEqual({ priority: 5, id: 0 });
         expect(heap.length).toEqual(0);
     });
 
@@ -45,12 +45,12 @@ describe("MinHeap", () => {
         heap.insert({ priority: 4, id: 4 });
 
         expect(heap.length).toEqual(5);
-        expect(heap.delete()).toEqual(1);
-        expect(heap.delete()).toEqual(4);
+        expect(heap.delete()).toEqual({ priority: 3, id: 1 });
+        expect(heap.delete()).toEqual({ priority: 4, id: 4 });
         expect(heap.length).toEqual(3);
-        expect(heap.delete()).toEqual(0);
-        expect(heap.delete()).toEqual(2);
-        expect(heap.delete()).toEqual(3);
+        expect(heap.delete()).toEqual({ priority: 5, id: 0 });
+        expect(heap.delete()).toEqual({ priority: 69, id: 2 });
+        expect(heap.delete()).toEqual({ priority: 420, id: 3 });
         expect(heap.length).toEqual(0);
     });
 
@@ -63,8 +63,8 @@ describe("MinHeap", () => {
         heap.insert({ priority: 4, id: 4 });
 
         expect(heap.length).toEqual(5);
-        expect(heap.delete()).toEqual(1);
-        expect(heap.delete()).toEqual(4);
+        expect(heap.delete()).toEqual({ priority: 3, id: 1 });
+        expect(heap.delete()).toEqual({ priority: 4, id: 4 });
 
         // Insert some elements and verify min-heap property
         heap.insert({ priority: 1, id: 5 });
@@ -72,11 +72,11 @@ describe("MinHeap", () => {
         heap.insert({ priority: 8, id: 7 });
 
         expect(heap.length).toEqual(6);
-        expect(heap.delete()).toEqual(5);
-        expect(heap.delete()).toEqual(0);
-        expect(heap.delete()).toEqual(6);
-        expect(heap.delete()).toEqual(7);
-        expect(heap.delete()).toEqual(2);
+        expect(heap.delete()).toEqual({ priority: 1, id: 5 });
+        expect(heap.delete()).toEqual({ priority: 5, id: 0 });
+        expect(heap.delete()).toEqual({ priority: 7, id: 6 });
+        expect(heap.delete()).toEqual({ priority: 8, id: 7 });
+        expect(heap.delete()).toEqual({ priority: 69, id: 2 });
         expect(heap.length).toEqual(1);
     });
 
