@@ -42,3 +42,9 @@ declare interface ILRU<K, V> {
     update(key: K, value: V): void;
     get(key: K): V | undefined;
 }
+
+declare type HeapElement = {
+    id: number | string;
+    priority: number;
+};
+

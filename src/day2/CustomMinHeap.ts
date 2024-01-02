@@ -1,8 +1,3 @@
-type HeapElement = {
-    id: number | string;
-    priority: number;
-};
-
 export default class MinHeap<T extends HeapElement> {
     public length: number;
     private data: T[];
@@ -16,6 +11,12 @@ export default class MinHeap<T extends HeapElement> {
 
     lookUpId(id: T["id"]): number | undefined {
         return this.lookUp.get(id);
+    }
+
+    getElement(id: T["id"]): T | undefined {
+        const elementIdx = this.lookUp.get(id);
+        if (elementIdx === undefined) return;
+        return this.data[elementIdx];
     }
 
     insert(element: T) {

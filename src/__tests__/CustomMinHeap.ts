@@ -122,4 +122,17 @@ describe("MinHeap", () => {
         expect(heap.lookUpId("A")).toEqual(0);
         expect(heap.lookUpId("C")).toEqual(1);
     });
+
+    test("Get element without deleting it", () => {
+        const heap = new MinHeap();
+
+        heap.insert({ priority: 5, id: "A" });
+        heap.insert({ priority: 3, id: "B" });
+        heap.insert({ priority: 69, id: "C" });
+
+        expect(heap.getElement("C")).toEqual({ priority: 69, id: "C" });
+        expect(heap.length).toEqual(3);
+
+        expect(heap.getElement("D")).toBeUndefined();
+    });
 });
